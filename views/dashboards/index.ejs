@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard page</title>
+    <h1>This is a Dashboard page</h1>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            padding-bottom: 20px;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="main navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">People's Doctor</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
+                aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            aria-expanded="false">Dropdown</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="/register">Sign Up</a>
+                    </li>
+                </ul>
+
+                <!--*----- Search of Navbar --------->
+
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+
+        <div id="faqs">
+
+            <div class="faq">
+                <p>
+                    <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
+                        aria-expanded="false" aria-controls="faq1">
+                        Faq - 1
+                    </button>
+                </p>
+                <div class="collapse" id="faq1">
+                    <div class="card card-body">
+                        Random goo...... Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sunt
+                        facilis rerum accusamus corrupti beatae quos, magni blanditiis reiciendis quis commodi eos
+                        minima
+                        repellendus modi minus, numquam harum quia? Aliquam.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq">
+                <p>
+                    <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
+                        aria-expanded="false" aria-controls="faq2">
+                        Faq - 2
+                    </button>
+                </p>
+                <div class="collapse" id="faq2">
+                    <div class="card card-body">
+                        2 gooooooo...... Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis
+                        aspernatur recusandae maxime, nihil nostrum excepturi provident consequuntur est laboriosam
+                        nesciunt
+                        officia, non cumque delectus fugiat itaque temporibus. Libero, dignissimos ipsam!
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq">
+                <p>
+                    <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#faq3"
+                        aria-expanded="false" aria-controls="faq3">
+                        Faq - 3
+                    </button>
+                </p>
+                <div class="collapse" id="faq3">
+                    <div class="card card-body">
+                        3.... Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad laudantium atque
+                        adipisci
+                        fuga omnis, sint recusandae vel incidunt nostrum quis ipsum non voluptates illo inventore
+                        similique
+                        amet necessitatibus molestias quidem.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
