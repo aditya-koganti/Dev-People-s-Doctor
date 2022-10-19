@@ -8,6 +8,7 @@ const express = require("express"),
   passport = require("passport"),
   LocalStrategy = require("passport-local"),
   passportLocalMongoose = require("passport-local-mongoose");
+  flash = require("connect-flash");
 
 // ============= Defining Custom Models
 
@@ -22,6 +23,8 @@ app.use(
   })
 );
 app.use(express.static(__dirname + "/public"));
+
+app.use(flash());
 
 mongoose.connect("mongodb://localhost/aighteam1", {
   useNewUrlParser: true,
@@ -52,6 +55,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
   next();
 });
 
