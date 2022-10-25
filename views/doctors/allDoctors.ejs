@@ -1,0 +1,14 @@
+<%- include("../partials/header") %>
+
+    <% allDoctors.forEach(function(doctor){ %>
+        <h3>Name: <%= doctor.name %></h3>
+        <ul>
+            <li>Rating: <%= doctor.rating %></li>
+            <li>Specialities: <%= doctor.specialities %></li>
+            <li>Description: <%= doctor.description %></li>
+        </ul>
+    <% }) %>
+
+    <a href="/doctor/doctorForm">Back to Doctor Form page</a>
+
+<%- include("../partials/footer") %>
