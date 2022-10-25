@@ -24,6 +24,15 @@ router.post("/", function(req, res){
     )
 })
 
-
+router.get("/all", function(req, res){
+    Doctor.find({}, function(err, allDoctors){
+        if(err){
+            console.log("All doctors retrieval error");
+            console.log(err)
+        }else{
+            res.render("doctors/allDoctors.ejs", {allDoctors: allDoctors})            
+        }
+    })
+})
 
 module.exports = router;
