@@ -1,59 +1,83 @@
 <%- include("../partials/header") %>
 
-        <div id="faqs">
+    <!-- Choosing Department -->
 
-            <div class="faq">
-                <p>
-                    <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
-                        aria-expanded="false" aria-controls="faq1">
-                        Faq - 1
-                    </button>
-                </p>
-                <div class="collapse" id="faq1">
-                    <div class="card card-body">
-                        Random goo...... Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sunt
-                        facilis rerum accusamus corrupti beatae quos, magni blanditiis reiciendis quis commodi eos
-                        minima
-                        repellendus modi minus, numquam harum quia? Aliquam.
-                    </div>
-                </div>
+    <div id="departments" class="mb-3">
+        <form action="/doctor/doctors" method="post">
+            
+            <!-- Department Name -->
+            <div class="mb-3">
+                <label for="departmentOptions" class="form-label">Select menu</label>
+                <select class="form-select" id="departmentOptions" name="departmentName" aria-label="Default select">
+                    <option selected>Choose Department</option>
+                    <option value="testDepartment">testDepartment</option>
+                    <option value="Allergist">Allergist</option>
+                    <option value="Dermatologist">Dermatologist</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
             </div>
 
-            <div class="faq">
-                <p>
-                    <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
-                        aria-expanded="false" aria-controls="faq2">
-                        Faq - 2
-                    </button>
-                </p>
-                <div class="collapse" id="faq2">
-                    <div class="card card-body">
-                        2 gooooooo...... Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis
-                        aspernatur recusandae maxime, nihil nostrum excepturi provident consequuntur est laboriosam
-                        nesciunt
-                        officia, non cumque delectus fugiat itaque temporibus. Libero, dignissimos ipsam!
-                    </div>
+            <button class="btn btn-primary" type="submit">Find Docs</button>
+        </form>
+    </div>
+
+    <!-- FAQs Section -->
+    <div id="faqs">
+
+        <div class="faq">
+            <p>
+                <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
+                    aria-expanded="false" aria-controls="faq1">
+                    Faq - 1
+                </button>
+            </p>
+            <div class="collapse" id="faq1">
+                <div class="card card-body">
+                    Random goo...... Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sunt
+                    facilis rerum accusamus corrupti beatae quos, magni blanditiis reiciendis quis commodi eos
+                    minima
+                    repellendus modi minus, numquam harum quia? Aliquam.
                 </div>
             </div>
-
-            <div class="faq">
-                <p>
-                    <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#faq3"
-                        aria-expanded="false" aria-controls="faq3">
-                        Faq - 3
-                    </button>
-                </p>
-                <div class="collapse" id="faq3">
-                    <div class="card card-body">
-                        3.... Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad laudantium atque
-                        adipisci
-                        fuga omnis, sint recusandae vel incidunt nostrum quis ipsum non voluptates illo inventore
-                        similique
-                        amet necessitatibus molestias quidem.
-                    </div>
-                </div>
-            </div>
-
         </div>
 
-<%- include("../partials/footer") %>
+        <div class="faq">
+            <p>
+                <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
+                    aria-expanded="false" aria-controls="faq2">
+                    Faq - 2
+                </button>
+            </p>
+            <div class="collapse" id="faq2">
+                <div class="card card-body">
+                    2 gooooooo...... Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis
+                    aspernatur recusandae maxime, nihil nostrum excepturi provident consequuntur est laboriosam
+                    nesciunt
+                    officia, non cumque delectus fugiat itaque temporibus. Libero, dignissimos ipsam!
+                </div>
+            </div>
+        </div>
+
+        <div class="faq">
+            <p>
+                <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#faq3"
+                    aria-expanded="false" aria-controls="faq3">
+                    Faq - 3
+                </button>
+            </p>
+            <div class="collapse" id="faq3">
+                <div class="card card-body">
+                    3.... Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad laudantium atque
+                    adipisci
+                    fuga omnis, sint recusandae vel incidunt nostrum quis ipsum non voluptates illo inventore
+                    similique
+                    amet necessitatibus molestias quidem.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <%- include("../partials/footer") %>
