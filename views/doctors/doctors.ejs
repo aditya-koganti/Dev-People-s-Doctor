@@ -1,0 +1,15 @@
+<%- include("../partials/header") %>
+
+<h1 class="text-primary">Doctors Available under <u><%= departmentName %></u> department</h1>
+
+<hr>
+<% doctors.forEach(function(doctor){ %>
+    <h3><%= doctor.name %></h3>
+    <ul>
+        <li>Rating: <%= doctor.rating %></li>
+        <li>Specialities: <%= doctor.specialities %></li>
+        <li>Description: <%= doctor.description %></li>
+    </ul>
+<% }) %>
+
+<%- include("../partials/footer") %>
