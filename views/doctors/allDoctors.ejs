@@ -1,14 +1,15 @@
 <%- include("../partials/header") %>
+    <a href="/doctor/doctorForm">Back to Doctor Form page</a>
 
     <% allDoctors.forEach(function(doctor){ %>
         <h3>Name: <%= doctor.name %></h3>
         <ul>
+            <li>Department: <%= doctor.department %></li>
             <li>Rating: <%= doctor.rating %></li>
             <li>Specialities: <%= doctor.specialities %></li>
             <li>Description: <%= doctor.description %></li>
         </ul>
     <% }) %>
 
-    <a href="/doctor/doctorForm">Back to Doctor Form page</a>
 
 <%- include("../partials/footer") %>
