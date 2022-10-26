@@ -20,7 +20,41 @@
         </div>
     </div>
 
-    <div id="section-2">
+    <div class="b-example-divider"></div>
+
+    <div class="bg-dark text-secondary px-4 py-5 text-center">
+        <div class="py-5">
+            <h1 class="display-5 fw-bold text-white">
+                <blockquote class="blockquote mb-4">
+                    <h1>
+                        <i class="fas fa-quote-left fa-lg text-warning me-2"></i>
+                        <span class="font-italic">Take care of your body. 
+                           <br> It's the only place you have to live in</span>
+                    </h1>
+                </blockquote>
+            </h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="fs-5 mb-4">
+                <figure>
+                    <figcaption class="blockquote-footer">
+                        Need to visit a doctor? 
+                        <cite title="Source Title">or write a comment?</cite>
+                    </figcaption>
+                </figure>
+                </p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" href="/dashboard/appointmentForm/<%= doctor._id %>">Book
+                        Appoitment</a>
+                    <a type="button" class="btn btn-outline-light btn-lg px-4"
+                        href="/dashboard/information/form/<%=doctor._id%>">Fill a Form</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="b-example-divider"></div>
+
+    <div id="section-2" class="px-4 py-5">
         <div class="row">
             <div class="col-lg-3">
                 <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
@@ -79,4 +113,5 @@
             </div><!-- /.col-lg-4 -->
         </div>
     </div>
+
     <%- include("../partials/footer") %>
