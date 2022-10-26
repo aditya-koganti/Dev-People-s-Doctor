@@ -57,4 +57,15 @@ router.post("/doctors", function (req, res) {
   );
 });
 
+router.get("/doctors/:id", function(req, res){
+  Doctor.findById(req.params.id).exec(function(err, doctor){
+    if(err){
+      req.flash(err);
+      console.log(err);
+    }else{
+      res.render("doctors/doctor", {doctor: doctor});
+    }
+  })
+})
+
 module.exports = router;
