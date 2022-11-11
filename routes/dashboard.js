@@ -70,4 +70,16 @@ router.post("/appointment/post/:id", function (req, res) {
   );
 });
 
+router.get("/appointment/:appointmentId", (req, res) => {
+  var appointment_id = req.params.appointmentId;
+  Appointment.findById(appointment_id, (err, appoi) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(appoi);
+      res.render("dashboards/appointmentInformation", { appointment: appoi });
+    }
+  });
+});
+
 module.exports = router;
