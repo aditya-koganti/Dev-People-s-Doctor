@@ -2,9 +2,17 @@ const express = require("express");
 const doctor = require("../models/doctor");
 const Info = require("../models/info");
 const router = express.Router();
+const Appointment = require("../models/appointment");
 
 router.get("/", function (req, res) {
-  res.render("dashboards/index.ejs");
+  Appointment.find({}, function (err, appointments) {
+      if (err) {
+      console.log(err);
+      } else {
+      console.log(appointments);
+      res.render("dashboards/index.ejs", { appointments: appointments });
+      }
+  });
 });
 
 router.get("/information/form/:id", function (req, res) {
@@ -29,6 +37,35 @@ router.post("/information/post/:id", function (req, res) {
             console.log(info);
             res.send(req.body.name + ", you details were sucessfully submitted");
         }
+    }
+  );
+});
+
+router.get("/appointment/form/:id", function (req, res) {
+  var doctorID = req.params.id;
+  // res.send("fasdfasd")
+  res.render("dashboards/bookappointment.ejs", { doctorID: doctorID });
+});
+
+router.post("/appointment/post/:id", function (req, res) {
+  Appointment.create(
+    {
+      firstName: req.body.firstName,
+      middleName: req.body.middleName,
+      LastName: req.body.LastName,
+      date: req.body.date,
+      gender: req.body.gender,
+      isBooked: false,
+    },
+    function (err, appointment) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(appointment);
+        res.render("dashboards/confirmation", {
+          firstName: req.body.firstName,
+        });
+      }
     }
   );
 });
