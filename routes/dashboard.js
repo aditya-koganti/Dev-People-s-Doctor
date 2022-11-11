@@ -33,4 +33,10 @@ router.post("/information/post/:id", function (req, res) {
   );
 });
 
+router.get("/appointment/form/:id", function (req, res) {
+  var doctorID = req.params.id;
+  // res.send("fasdfasd")
+  res.render("dashboards/bookappointment.ejs", { doctorID: doctorID });
+});
+
 module.exports = router;
