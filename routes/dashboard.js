@@ -2,6 +2,7 @@ const express = require("express");
 const doctor = require("../models/doctor");
 const Info = require("../models/info");
 const router = express.Router();
+const Appointment = require("../models/appointment");
 
 router.get("/", function (req, res) {
   res.render("dashboards/index.ejs");
