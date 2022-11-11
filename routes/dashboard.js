@@ -1,17 +1,17 @@
 const express = require("express");
 const doctor = require("../models/doctor");
 const Info = require("../models/info");
-const router = express.Router();
 const Appointment = require("../models/appointment");
+const router = express.Router();
 
 router.get("/", function (req, res) {
   Appointment.find({}, function (err, appointments) {
-      if (err) {
+    if (err) {
       console.log(err);
-      } else {
+    } else {
       console.log(appointments);
       res.render("dashboards/index.ejs", { appointments: appointments });
-      }
+    }
   });
 });
 
@@ -31,12 +31,12 @@ router.post("/information/post/:id", function (req, res) {
       facing: req.body.facing,
     },
     function (err, info) {
-        if(err){
-            console.log(err);
-        }else{
-            console.log(info);
-            res.send(req.body.name + ", you details were sucessfully submitted");
-        }
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(info);
+        res.send(req.body.name + ", you details were sucessfully submitted");
+      }
     }
   );
 });
@@ -77,9 +77,37 @@ router.get("/appointment/:appointmentId", (req, res) => {
       console.log(err);
     } else {
       console.log(appoi);
-      res.render("dashboards/appointmentInformation", { appointment: appoi });
+      res.render("dashboards/bookings", { appointment: appoi });
     }
   });
+});
+
+router.get("/appointment/:appointmentId/checkout", (req, res) => {
+  var appointment_id = req.params.appointmentId;
+  Appointment.findById(appointment_id, (err, appoi) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(appoi);
+      res.render("dashboards/checkout", { appointment: appoi });
+    }
+  });
+});
+
+router.post("/appointment/:appointmentId/checkout", (req, res) => {
+  var appointment_id = req.params.appointmentId;
+  Appointment.updateOne(
+    { _id: appointment_id },
+    { isBooked: true },
+    (err, appointment) => {
+      Appointment.findById(appointment_id, (err, appointe) => {
+        console.log(appointe);
+        res.render("dashboards/confirmation", {
+          firstName: appointe.firstName,
+        });
+      });
+    }
+  );
 });
 
 module.exports = router;

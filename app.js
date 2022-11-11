@@ -67,8 +67,4 @@ app.use("/", indexRoutes);
 app.use("/dashboard", DashboardRoutes);
 app.use("/doctor", DoctorRoutes)
 
-// ============= End Setup =============//
-
-app.listen(3000, function () {
-  console.log("hahahahaha you are good to goo..... :DDDDDDD");
-});
+module.exports = app;
