@@ -1,7 +1,4 @@
 <%- include("../partials/header") %>
-
-    <!-- Choosing Department -->
-
     <div class="my-3">
         <!-- Accordion start -->
         <div class="accordion" id="myAppointments">
@@ -16,7 +13,7 @@
                         My Appointments
                     </button>
                 </h4>
-                <div id="mainCollapse" class="accordion-collapse collapse show" aria-labelledby="myAppointmentsHeader"
+                <div id="mainCollapse" class="accordion-collapse collapse" aria-labelledby="myAppointmentsHeader"
                     data-bs-parent="#myAppointments">
 
                     <!-- Accordion body -->
@@ -27,54 +24,86 @@
 
                         <div class="accordion" id="accordionSub1">
 
-                            <!-- Sub Accordion item - 1 -->
+                            <% appointments.forEach(function(appointment){ %>
+                                <div class="accordion-item">
 
-                            <div class="accordion-item">
+                                    <!-- Sub Accordion header - <%= appointment._id %>  -->
 
-                                <!-- Sub Accordion header - 1 -->
+                                    <h4 class="accordion-header" id="bookingHead <%= appointment._id %>">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#bookingCollapse<%= appointment._id %>" aria-expanded="true"
+                                            aria-controls="bookingCollapse<%= appointment._id %>">
+                                            Appointment booked on: <i class="text-primary"> <%= appointment.date %></i>
+                                                
+                                            </a>
+                                        </button>
+                                    </h4>
+                                    <div id="bookingCollapse<%= appointment._id %>" class="accordion-collapse collapse"
+                                        aria-labelledby="bookingHead<%= appointment._id %>"
+                                        data-bs-parent="#accordionSub<%= appointment._id %>">
 
-                                <h4 class="accordion-header" id="bookingHead1">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#bookingCollapse1" aria-expanded="true"
-                                        aria-controls="bookingCollapse1">
-                                        Booking - 1
-                                    </button>
-                                </h4>
-                                <div id="bookingCollapse1" class="accordion-collapse collapse show"
-                                    aria-labelledby="bookingHead1" data-bs-parent="#accordionSub1">
+                                        <!-- Sub Accordion body - <%= appointment._id %> -->
 
-                                    <!-- Sub Accordion header - 1 -->
-
-                                    <div class="accordion-body">
-                                        This was a static data that would later substituted with backend data,
+                                        <div class="accordion-body">
+                                            hey <p class="text-primary"><%= appointment.firstName %></p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque quas ex
+                                            illum reprehenderit accusantium, inventore nisi omnis cupiditate debitis in
+                                            minus tempore velit possimus? Ducimus obcaecati quasi dolore aliquam
+                                            doloremque.
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Sub Accordion item - 2 -->
+                                <% }) %>
 
-                            <div class="accordion-item">
+                                    <!-- Sub Accordion item - 1 -->
 
-                                <!-- Sub Accordion header - 2 -->
+                                    <div class="accordion-item">
 
-                                <h4 class="accordion-header" id="bookingHead2">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#bookingCollapse2" aria-expanded="true"
-                                        aria-controls="bookingCollapse2">
-                                        Booking - 2
-                                    </button>
-                                </h4>
-                                <div id="bookingCollapse2" class="accordion-collapse collapse show"
-                                    aria-labelledby="bookingHead2" data-bs-parent="#accordionSub2">
+                                        <!-- Sub Accordion header - 1 -->
 
-                                    <!-- Sub Accordion body - 2 -->
+                                        <h4 class="accordion-header" id="bookingHead1">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#bookingCollapse1" aria-expanded="true"
+                                                aria-controls="bookingCollapse1">
+                                                Booking - 1
+                                            </button>
+                                        </h4>
+                                        <div id="bookingCollapse1" class="accordion-collapse collapse"
+                                            aria-labelledby="bookingHead1" data-bs-parent="#accordionSub1">
 
-                                    <div class="accordion-body">
-                                        This was a sample booking-2, that will be later replaced with details from
-                                        database
+                                            <!-- Sub Accordion header - 1 -->
+
+                                            <div class="accordion-body">
+                                                This was a static data that would later substituted with backend data,
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+
+                                    <!-- Sub Accordion item - 2 -->
+
+                                    <div class="accordion-item">
+
+                                        <!-- Sub Accordion header - 2 -->
+
+                                        <h4 class="accordion-header" id="bookingHead2">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#bookingCollapse2" aria-expanded="true"
+                                                aria-controls="bookingCollapse2">
+                                                Booking - 2
+                                            </button>
+                                        </h4>
+                                        <div id="bookingCollapse2" class="accordion-collapse collapse"
+                                            aria-labelledby="bookingHead2" data-bs-parent="#accordionSub2">
+
+                                            <!-- Sub Accordion body - 2 -->
+
+                                            <div class="accordion-body">
+                                                This was a sample booking-2, that will be later replaced with details
+                                                from
+                                                database
+                                            </div>
+                                        </div>
+                                    </div>
 
                         </div>
                     </div>
@@ -83,9 +112,12 @@
         </div>
     </div>
 
+
+    <!-- Choosing Department -->
+
     <div id="departments" class="mb-3">
         <form action="/doctor/doctors" method="post">
-            
+
             <!-- Department Name -->
             <div class="mb-3">
                 <label for="departmentOptions" class="form-label">Select menu</label>

@@ -5,7 +5,14 @@ const router = express.Router();
 const Appointment = require("../models/appointment");
 
 router.get("/", function (req, res) {
-  res.render("dashboards/index.ejs");
+  Appointment.find({}, function (err, appointments) {
+      if (err) {
+      console.log(err);
+      } else {
+      console.log(appointments);
+      res.render("dashboards/index.ejs", { appointments: appointments });
+      }
+  });
 });
 
 router.get("/information/form/:id", function (req, res) {
