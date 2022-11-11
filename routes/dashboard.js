@@ -33,4 +33,33 @@ router.post("/information/post/:id", function (req, res) {
   );
 });
 
+router.get("/appointment/form/:id", function (req, res) {
+  var doctorID = req.params.id;
+  // res.send("fasdfasd")
+  res.render("dashboards/bookappointment.ejs", { doctorID: doctorID });
+});
+
+router.post("/appointment/post/:id", function (req, res) {
+  Appointment.create(
+    {
+      firstName: req.body.firstName,
+      middleName: req.body.middleName,
+      LastName: req.body.LastName,
+      date: req.body.date,
+      gender: req.body.gender,
+      isBooked: false,
+    },
+    function (err, appointment) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(appointment);
+        res.render("dashboards/confirmation", {
+          firstName: req.body.firstName,
+        });
+      }
+    }
+  );
+});
+
 module.exports = router;
