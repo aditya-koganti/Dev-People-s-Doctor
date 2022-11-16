@@ -1,0 +1,29 @@
+<%- include("../partials/header") %>
+
+	<form action="/doctor" method="POST">
+		<h1>Create Doctor</h1>
+
+		<label for="name">Full Name:</label>
+		<input type="text" name="name" placeholder="First Last">
+
+		<label for="Rating">Department:</label>
+		<input type="text" name="department" placeholder="Department Name">
+
+		<label for="Rating">Rating:</label>
+		<input type="number" name="rating" placeholder="0.0">
+
+		<label for="specialities">Specialities:</label>
+		<input type="text" name="specialities" placeholder="disease1, disease2,.........">
+
+		<label for="description">Description:</label>
+		<textarea name="description" cols="30" rows="10"></textarea>
+
+		<button type="submit">
+			Submit
+		</button>
+
+	</form>
+
+	<a href="/doctor/all">Display all Doctors</a>
+
+<%- include("../partials/footer") %>

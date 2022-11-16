@@ -1,0 +1,12 @@
+<%- include("../partials/header") %>
+
+    <p class="mb-3"> hey <%= appointment.middleName %>, your appointment is on <%= appointment.date %>
+    </p><br>
+
+    
+    <% if(appointment.isBooked) { %>
+        <a href="/dashboard/appointment/<%= appointment._id %>/checkout" class="btn btn-success btn-lg">Finalize and
+            book?</a>
+        <% }%>
+
+            <%- include("../partials/footer") %>
