@@ -37,7 +37,7 @@ mongoose.connect("mongodb://localhost/aighteam1", {
 const indexRoutes = require("./routes/index");
 const DashboardRoutes = require("./routes/dashboard");
 const DoctorRoutes = require("./routes/doctor");
-const DiseaseRoutes = require("./routes/diseases");
+const DiseaseRoutes = require("./routes/disease");
 
 //===========  Authentication  =========== //
 
