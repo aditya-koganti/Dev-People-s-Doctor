@@ -8,12 +8,13 @@
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="/stylesheet/disease.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.js"></script>
 </head>
 
 <body>
 
 	<div id="container">
-		<form method="POST">
+		<form action="/disease" method="POST">
 			<h1>Create Disease<i class="fa fa-plus"></i></h1>
 			<label for="disease">Disease:</label>
 			<input type="text" name="disease" placeholder="Name of the Disease">
@@ -23,14 +24,15 @@
 
 			</ul>
 		</form>
-		<form id="2" method="POST">
+		<form id="2" action="/disease" method="POST">
 			<button type="submit" class="btn btn-success">
 				Submit
 			</button>
 		</form>
 	</div>
-		<a href="/diseases">Display all Diseases</a>
+	<a href="/diseases">Display all Diseases</a>
 
+	<script type="text/javascript" src="/javascript/diseaseScript.js"></script>
 
 </body>
 
