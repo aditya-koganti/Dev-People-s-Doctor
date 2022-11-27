@@ -20,13 +20,13 @@ describe("User Endpoints", () => {
 });
 
 describe("Checking all Doctors database", () => {
-  // it("checking if the labeled id was sent", async () => {
-  //   let res = await request(testApp).get("/doctor/all");
-  //   expect(res.body).toHaveProperty("firstDoctor")
-  // })
+  it("checking if the labeled id was sent", async () => {
+    let res = await request(testApp).get("/doctor/all");
+    expect(res.body).toHaveProperty("firstDoctor")
+  })
 
-  // it("checking one value of the property of one doctor", async () => {
-  //   let res = await request(testApp).get("/doctor/all");
-  //   expect(res.body.firstDoctor["_id"]).toBeDefined();
-  // })
+  it("checking one value of the property of one doctor", async () => {
+    let res = await request(testApp).get("/doctor/all");
+    expect(res.body.firstDoctor["_id"]).toBeDefined();
+  })
 })

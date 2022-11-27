@@ -9,7 +9,7 @@ router.get("/", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      console.log(appointments);
+      // console.log("All Appointments: " + appointments);
       res.render("dashboards/index.ejs", { appointments: appointments });
     }
   });
@@ -34,7 +34,7 @@ router.post("/information/post/:id", function (req, res) {
       if (err) {
         console.log(err);
       } else {
-        console.log(info);
+        console.log("New Info created: " + info);
         res.send(req.body.name + ", you details were sucessfully submitted");
       }
     }
