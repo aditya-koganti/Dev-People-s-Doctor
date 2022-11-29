@@ -40,7 +40,7 @@
         <div class="container">
             <!-- <a class="navbar-brand text-primary" href="/">People's Doc</a> -->
             <a href="/" class="navbar-brand">
-                <img src="/assets/images/logo2rb.png" alt="logo"  width="130" height="90">
+                <img src="/assets/images/logo2rb.png" alt="logo" width="130" height="90">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
                 aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,8 +52,14 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/doctor/all">Doctors</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            aria-expanded="false">Doctor</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/doctor/all">All Docs</a></li>
+                            <li><a class="dropdown-item" href="/bestDoctors">Best Doctors</a></li>
+                            <li><a class="dropdown-item" href="/doctor/doctorForm">Create a Doctor</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled">Disabled</a>
@@ -83,17 +89,18 @@
                         <% if(currentUser){ %>
                             <ul class="navbar-nav">
                                 <li class="nav-item ms-3">
-                                    <a class="nav-link text-success" href="#">
+                                    <a class="nav-link text-success" href="/user/<%= currentUser._id %>/edit">
                                         <%= currentUser.username %>
                                     </a>
                                 </li>
-                                <li class="nav-item dropdown m-0 z-1">
+                                <!-- <li class="nav-item dropdown m-0 z-1">
                                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                         aria-expanded="false"></a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="/user/<%= currentUser._id %>/edit">Edit Profile</a></li>
+                                        <li><a class="dropdown-item" href="/user/<%= currentUser._id %>/edit">Edit
+                                                Profile</a></li>
                                     </ul>
-                                </li>
+                                </li> -->
                                 <!--*----- Search of Navbar --------->
 
                                 <form class="d-flex ms-3" role="search">
