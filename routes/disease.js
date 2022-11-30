@@ -23,5 +23,26 @@ router.post("/disease", function(req, res){
     })
 })
 
+// Get diseases based on symptoms
+
+router.post("/symptoms/diseases", (req, res) => {
+    let sampleSymptoms = req.body.symptoms;
+    // console.log(symptoms);
+    const sDiseases = [];
+    sampleSymptoms.forEach(function(symptom){
+        sDiseases.push("diseases 2");
+        const diseases = Disease.find({ symptoms: symptom }).exec().then((diseases) => {
+            sDiseases.push(diseases);
+            console.log("new disease"+ diseases);
+            return diseases;
+        });
+        sDiseases.push(diseases);
+    })
+    console.log("sDiseases: " + sDiseases)
+
+    res.send(sDiseases);
+
+    // res.render("diseases")
+})
 
 module.exports = router;
