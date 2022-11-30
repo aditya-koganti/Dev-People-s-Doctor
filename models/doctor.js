@@ -5,7 +5,9 @@ doctorSchema = new mongoose.Schema({
     department: String,
     rating: Number,
     specialities: String,
-    description: String
+    description: String,
+    experience: Number,
+    successRate: Number
 })
 
 module.exports = mongoose.model("Doctor", doctorSchema)
