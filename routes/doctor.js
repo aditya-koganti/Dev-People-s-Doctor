@@ -1,6 +1,7 @@
 const express = require("express"),
   app = express();
 const router = require(".");
+const doctor = require("../models/doctor");
 const Doctor = require("../models/doctor");
 
 router.get("/doctorForm", function (req, res) {
@@ -14,6 +15,8 @@ router.post("/", function (req, res) {
       department: req.body.department,
       rating: req.body.rating,
       specialities: req.body.specialities,
+      experience: req.body.experience,
+      successRate: req.body.successRate,
       description: req.body.description,
     },
     function (err, newDoctor) {
@@ -39,6 +42,16 @@ router.get("/all", function (req, res) {
     }
   });
 });
+
+router.get("/bestDoctors", (req, res) => {
+  Doctor.find({}, (err, doctors) => {
+    if(err){
+      console.log(err);
+    }else{
+      res.render("doctors/bestDoctors.ejs", { allDoctors: doctors.sort((a, b) => a.successRate - b.successRate).reverse() });
+    }
+  })
+})
 
 router.post("/doctors", function (req, res) {
   var departmentName = req.body.departmentName;
