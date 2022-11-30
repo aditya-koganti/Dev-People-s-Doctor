@@ -33,8 +33,10 @@
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#bookingCollapse<%= appointment._id %>" aria-expanded="true"
                                             aria-controls="bookingCollapse<%= appointment._id %>">
-                                            Appointment booked on: <i class="text-primary"> <%= appointment.date %></i>
-                                                
+                                            Appointment booked on: <i class="text-primary">
+                                                <%= appointment.date %>
+                                            </i>
+
                                             </a>
                                         </button>
                                     </h4>
@@ -116,26 +118,49 @@
 
 
     <!-- Choosing Department -->
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <div id="departments" class="cmb-3">
+                <h4 class="text-center">Know your Department?</h4>
 
-    <div id="departments" class="mb-3">
-        <form action="/doctor/doctors" method="post">
+                    <form class="p-3" action="/doctor/doctors" method="post">
 
-            <!-- Department Name -->
-            <div class="mb-3">
-                <label for="departmentOptions" class="form-label">Select menu</label>
-                <select class="form-select" id="departmentOptions" name="departmentName" aria-label="Default select">
-                    <option selected>Choose Department</option>
-                    <option value="testDepartment">testDepartment</option>
-                    <option value="Allergist">Allergist</option>
-                    <option value="Dermatologist">Dermatologist</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+                        <!-- Department Name -->
+                        <div class="mb-3">
+                            <label for="departmentOptions" class="form-label">choose your Department</label>
+                            <select class="form-select" id="departmentOptions" name="departmentName"
+                                aria-label="Default select">
+                                <option selected>Choose Department</option>
+                                <option value="testDepartment">testDepartment</option>
+                                <option value="Allergist">Allergist</option>
+                                <option value="Dermatologist">Dermatologist</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Find Docs</button>
+                    </form>
+                </div>
             </div>
-
-            <button class="btn btn-primary" type="submit">Find Docs</button>
-        </form>
+            <div class="col">
+                <h4 class="text-center">Find your disease?</h4>
+                <form class="p-3 m-0 border-0 bd-example" action="/symptoms/diseases" method="POST">
+                    <label for="symptoms">Choose symptoms:</label>
+                    <select class="form-select" name="symptoms" multiple aria-label="multiple select example">
+                        <option disabled>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="testSymptom21">testSymptom21</option>
+                        <option value="Sneezing">Sneezing</option>
+                    </select>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- FAQs Section -->
