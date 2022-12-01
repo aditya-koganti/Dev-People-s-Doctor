@@ -1,48 +1,78 @@
 const express = require("express");
 const router = express.Router();
 const Disease = require("../models/disease");
+const Doctor = require("../models/doctor");
 
-router.get("/diseaseForm", function(req, res){
-    res.render("disease/diseasesForm")
-})
+router.get("/diseaseForm", function (req, res) {
+  res.render("disease/diseasesForm");
+});
 
-router.post("/disease", function(req, res){
-    var disease = req.body.disease;
-    var symptoms = req.body.symptoms;
-    var newDisease = {
-        disease: disease,
-        symptoms: symptoms
+router.post("/disease", function (req, res) {
+  var disease = req.body.disease;
+  var symptoms = req.body.symptoms;
+  var newDisease = {
+    disease: disease,
+    symptoms: symptoms,
+  };
+  Disease.create(newDisease, function (err, createdDisease) {
+    if (err) {
+      console.log("created error");
+      console.log(err);
+    } else {
+      req.flash("success", "You have created a disease");
+      console.log(createdDisease);
+      res.redirect("/diseases");
     }
-    Disease.create(newDisease, function(err, createdDisease){
-        if(err){console.log("created error");console.log(err)}
-        else{
-            req.flash("success","You have created a disease");
-            console.log(createdDisease);
-            res.redirect("/diseases");
-        }
-    })
-})
+  });
+});
 
 // Get diseases based on symptoms
 
 router.post("/symptoms/diseases", (req, res) => {
-    let sampleSymptoms = req.body.symptoms;
-    // console.log(symptoms);
-    const sDiseases = [];
-    sampleSymptoms.forEach(function(symptom){
-        sDiseases.push("diseases 2");
-        const diseases = Disease.find({ symptoms: symptom }).exec().then((diseases) => {
-            sDiseases.push(diseases);
-            console.log("new disease"+ diseases);
-            return diseases;
-        });
-        sDiseases.push(diseases);
-    })
-    console.log("sDiseases: " + sDiseases)
+  console.log("=====================================");
+  let sSampleSymptoms = req.body.symptoms;
+  let sampleSymptoms = [];
+  if (
+    typeof sSampleSymptoms === "string" ||
+    sSampleSymptoms instanceof String
+  ) {
+    sampleSymptoms.push(sSampleSymptoms);
+  } else {
+    sampleSymptoms = sSampleSymptoms;
+  }
 
-    res.send(sDiseases);
+  sampleSymptoms.forEach(function (symptom) {
+    Disease.find({ symptoms: symptom })
+      .exec()
+      .then((diseases) => {
+        console.log("finded disease: " + diseases);
+        res.render("disease/diseases", { allDiseases: diseases });
+      });
+  });
 
-    // res.render("diseases")
+  // const sDiseases = [];
+  // sDiseases.push("fasdfsd23e2")
+  // sDiseases.push([{"name": "banu", "age": "regret"}])
+  // sampleSymptoms.forEach(function(symptom){
+  //     Disease.find({ symptoms: symptom }).exec().then((diseases) => {
+  //         console.log("finded disease: "+ diseases);
+  //         sDiseases.push(diseases[0]);
+  //     });
+  // })
+  // console.log(sDiseases)
+  // res.send("sDiseases: " + sDiseases)
+
+});
+
+router.post("/symptoms/diseases/doctors", (req, res) => {
+    let speciality = req.body.diseaseName;
+    console.log(speciality)
+    Doctor.find({ specialities: { $regex: speciality, $options: "i" } })
+      .exec()
+      .then((doctor) => {
+        console.log("finded doctor: " + doctor);
+        res.render("doctors/bestDoctors.ejs", { allDoctors: doctor.sort((a, b) => a.successRate - b.successRate).reverse() });
+      });
 })
 
 module.exports = router;
