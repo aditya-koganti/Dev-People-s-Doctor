@@ -1,5 +1,5 @@
 # which containter are going to use or which application you wanna run
-FROM node:alpine
+FROM node:16.14.2
 
 #2 specify woking directory can be any
 WORKDIR /usr/src/app
@@ -14,5 +14,6 @@ RUN npm ci
 # like .gitignore that folder is mentioned
 COPY . .
 
+EXPOSE 4000 
 # what would you like to do? me: starting the app
-CMD [ "npm" "start"]
+CMD node /usr/src/app/server.js
