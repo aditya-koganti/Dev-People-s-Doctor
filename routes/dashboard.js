@@ -2,6 +2,7 @@ const express = require("express");
 const doctor = require("../models/doctor");
 const Info = require("../models/info");
 const Appointment = require("../models/appointment");
+const Disease = require("../models/disease");
 const router = express.Router();
 
 router.get("/", function (req, res) {
@@ -9,8 +10,13 @@ router.get("/", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      // console.log("All Appointments: " + appointments);
-      res.render("dashboards/index.ejs", { appointments: appointments });
+      Disease.find({}, (err, diseases) => {
+        if (err) {
+          console.log("Get all diseases error: " + err);
+        } else {
+          res.render("dashboards/index.ejs", { appointments: appointments, diseases: diseases });
+        }
+      });
     }
   });
 });
