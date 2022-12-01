@@ -151,11 +151,21 @@
                     <label for="symptoms">Choose symptoms:</label>
                     <select class="form-select" name="symptoms" multiple aria-label="multiple select example">
                         <option disabled>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
                         <option value="testSymptom21">testSymptom21</option>
                         <option value="Sneezing">Sneezing</option>
+                        
+                        <% var symptomArray = [] %>
+                        <% diseases.forEach((disease) => { %>
+                            <%  disease.symptoms.forEach((symptom) => { %>
+                                <% symptomArray.push(symptom) %>
+                            <%  }) %>
+                        <% }) %>
+                        <% var newSymptomArray = [...new Set(symptomArray)] %>
+                        
+                        <% newSymptomArray.forEach((symptom) => { %>
+                            <option value="<%= symptom %>"><%= symptom %> </option>
+                        <% }) %>
+
                     </select>
                     <input type="submit" value="Submit">
                 </form>
