@@ -2,6 +2,7 @@ const express = require("express");
 const doctor = require("../models/doctor");
 const Info = require("../models/info");
 const Appointment = require("../models/appointment");
+var middleware = require("../middleware")   
 const Disease = require("../models/disease");
 const router = express.Router();
 
@@ -15,7 +16,11 @@ router.get("/", function (req, res) {
         if (err) {
           console.log("Get all diseases error: " + err);
         } else {
-          res.render("dashboards/index.ejs", { appointments: appointments, diseases: diseases });
+          if(middleware.isLoggedIn){
+            res.render("dashboards/index.ejs", { appointments: appointments, diseases: diseases });
+          }else{
+            res.render("dashboards/index.ejs", {diseases: diseases });
+          }
         }
       });
     }
@@ -82,7 +87,7 @@ router.post("/appointment/post/:id", function (req, res) {
 });
 
 // getting appointments using appointmentID
-router.get("/appointment/:appointmentId", (req, res) => {
+router.get("/appointment/:appointmentId", middleware.isLoggedIn, (req, res) => {
   var appointment_id = req.params.appointmentId;
   Appointment.findById(appointment_id, (err, appoi) => {
     if (err) {
@@ -95,7 +100,7 @@ router.get("/appointment/:appointmentId", (req, res) => {
 });
 
 // checkout page baed on appointmentID
-router.get("/appointment/:appointmentId/checkout", (req, res) => {
+router.get("/appointment/:appointmentId/checkout", middleware.isLoggedIn, (req, res) => {
   var appointment_id = req.params.appointmentId;
   Appointment.findById(appointment_id, (err, appoi) => {
     if (err) {
