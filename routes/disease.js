@@ -66,6 +66,17 @@ router.post("/symptoms/diseases", (req, res) => {
 
 });
 
+router.get("/all-diseases", function(req, res){
+  // res.render("dashboards/symptoms.ejs", {page: "symptoms"})
+  Disease.find({}, function(err, allDiseases){
+      if(err){
+          console.log(err)
+      }else{
+          res.render("disease/diseases", {allDiseases: allDiseases})
+      }
+  })
+})
+
 // Listing out best doctors based on Success rate for each disease
 router.post("/symptoms/diseases/doctors", (req, res) => {
     let speciality = req.body.diseaseName;

@@ -4,7 +4,7 @@
     </p><br>
 
     <!-- After booking appointment that details are added in the my appointments  -->
-    <% if(appointment.isBooked) { %>
+    <% if(!appointment.isBooked) { %>
         <a href="/dashboard/appointment/<%= appointment._id %>/checkout" class="btn btn-success btn-lg">Finalize and
             book?</a>
         <% }%>
