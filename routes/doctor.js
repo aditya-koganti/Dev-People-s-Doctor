@@ -4,10 +4,12 @@ const router = require(".");
 const doctor = require("../models/doctor");
 const Doctor = require("../models/doctor");
 
+// doctor profile
 router.get("/doctorForm", function (req, res) {
   res.render("doctors/doctorForm.ejs");
 });
 
+// doctor details form and after successful creation of doctor profile display "Doctor created"
 router.post("/", function (req, res) {
   Doctor.create(
     {
@@ -32,6 +34,7 @@ router.post("/", function (req, res) {
   );
 });
 
+// retrieving all doctors
 router.get("/all", function (req, res) {
   Doctor.find({}, function (err, allDoctors) {
     if (err) {
@@ -43,6 +46,7 @@ router.get("/all", function (req, res) {
   });
 });
 
+// best doctors based on success rate sorting
 router.get("/bestDoctors", (req, res) => {
   Doctor.find({}, (err, doctors) => {
     if(err){
@@ -70,6 +74,7 @@ router.post("/doctors", function (req, res) {
   );
 });
 
+// individual doctor page by using unique doctor ID 
 router.get("/doctors/:id", function(req, res){
   Doctor.findById(req.params.id).exec(function(err, doctor){
     if(err){
