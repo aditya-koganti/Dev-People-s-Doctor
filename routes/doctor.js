@@ -3,14 +3,15 @@ const express = require("express"),
 const router = require(".");
 const doctor = require("../models/doctor");
 const Doctor = require("../models/doctor");
+var middleware = require("../middleware")   
 
 // doctor profile
-router.get("/doctorForm", function (req, res) {
+router.get("/doctorForm", middleware.isAdminLoggedIn, function (req, res) {
   res.render("doctors/doctorForm.ejs");
 });
 
 // doctor details form and after successful creation of doctor profile display "Doctor created"
-router.post("/", function (req, res) {
+router.post("/", middleware.isAdminLoggedIn, function (req, res) {
   Doctor.create(
     {
       name: req.body.name,
