@@ -7,7 +7,7 @@ services:
   mongo_db: 
     container_name: db_container 
     # provide your image
-    image: mongo:latest
+    image: mongo
     # what should happen if it fails
     restart: always
     # data will earsed if you don't provide volume which keeps data, when you start and stop
@@ -18,10 +18,10 @@ services:
   api:
     build: .
     ports: 
-      - 4000:4000
+      - 4000:3000
     environment:
-      PORT: 4000
-      MONGODB_URI: mongodb+srv://aditya:aditya@aighteamc1.bmxwix1.mongodb.net/?retryWrites=true&w=majority
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo_db:27017/aighteam1
       NAME: docker_env_name
     depends_on:
       - mongo_db
