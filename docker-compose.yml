@@ -21,7 +21,7 @@ services:
       - 4000:4000
     environment:
       PORT: 4000
-      MONGODB_URI: mongodb+srv://aditya:aditya@aighteamc1.bmxwix1.mongodb.net/?retryWrites=true&w=majority
+      MONGODB_URI: mongodb://localhost/aighteam1
       NAME: docker_env_name
     depends_on:
       - mongo_db
