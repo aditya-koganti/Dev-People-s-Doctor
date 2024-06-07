@@ -2,11 +2,11 @@ const express = require("express");
 const doctor = require("../models/doctor");
 const Info = require("../models/info");
 const Appointment = require("../models/appointment");
-var middleware = require("../middleware")   
+var middleware = require("../middleware");
 const Disease = require("../models/disease");
 const router = express.Router();
 
-//here we are pulling appointments and diseases  
+//here we are pulling appointments and diseases
 router.get("/", function (req, res) {
   Appointment.find({}, function (err, appointments) {
     if (err) {
@@ -16,11 +16,21 @@ router.get("/", function (req, res) {
         if (err) {
           console.log("Get all diseases error: " + err);
         } else {
-          if(middleware.isLoggedIn){
-            res.render("dashboards/index.ejs", { appointments: appointments, diseases: diseases });
-          }else{
-            res.render("dashboards/index.ejs", {diseases: diseases });
-          }
+          doctor.find({}, (err, docs) => {
+            if (err) {
+              console.log("Dashboard docs error: " + err);
+            } else {
+              if (middleware.isLoggedIn) {
+                res.render("dashboards/index.ejs", {
+                  appointments: appointments,
+                  diseases: diseases,
+                  alldocs: docs
+                });
+              } else {
+                res.render("dashboards/index.ejs", { diseases: diseases, alldocs: docs });
+              }
+            }
+          });
         }
       });
     }
@@ -100,19 +110,23 @@ router.get("/appointment/:appointmentId", middleware.isLoggedIn, (req, res) => {
 });
 
 // checkout page baed on appointmentID
-router.get("/appointment/:appointmentId/checkout", middleware.isLoggedIn, (req, res) => {
-  var appointment_id = req.params.appointmentId;
-  Appointment.findById(appointment_id, (err, appoi) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(appoi);
-      res.render("dashboards/checkout", { appointment: appoi });
-    }
-  });
-});
+router.get(
+  "/appointment/:appointmentId/checkout",
+  middleware.isLoggedIn,
+  (req, res) => {
+    var appointment_id = req.params.appointmentId;
+    Appointment.findById(appointment_id, (err, appoi) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(appoi);
+        res.render("dashboards/checkout", { appointment: appoi });
+      }
+    });
+  }
+);
 
-// confirmation page based on appointmentID 
+// confirmation page based on appointmentID
 router.post("/appointment/:appointmentId/checkout", (req, res) => {
   var appointment_id = req.params.appointmentId;
   Appointment.updateOne(

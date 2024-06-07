@@ -47,7 +47,15 @@ $(document).ready(function () {
       data: formData,
       dataType: "json",
       encode: true,
+      success: function(response) {
+        if (response.success) {
+            window.location.href = '/all-diseases';
+        } else {
+            alert(response.message);
+        }
+    },
     }).done(function (data) {
+      window.location.href = 'http://localhost:3000/all-diseases'
       console.log(data);
     });
 

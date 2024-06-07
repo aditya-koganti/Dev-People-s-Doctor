@@ -132,12 +132,18 @@
                             <select class="form-select" id="departmentOptions" name="departmentName"
                                 aria-label="Default select">
                                 <option selected>Choose Department</option>
-                                <option value="testDepartment">testDepartment</option>
-                                <option value="Allergist">Allergist</option>
-                                <option value="Dermatologist">Dermatologist</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <% var alldocsArray = [] %>
+                                <% alldocs.forEach((doc) => { %>
+                                        <% alldocsArray.push(doc.department) %>
+                                <% }) %>
+                                <% var newDepArray = [...new Set(alldocsArray)] %>
+
+                                
+                                <% newDepArray.forEach(function(department){ %>
+                                    <option value="<%= department %>"><%= department %></option>
+                                <% }) %>
+                                <!-- <option value="Allergist">Allergist</option> -->
+                                <!-- <option value="Dermatologist">Dermatologist</option> -->
                             </select>
                         </div>
 
@@ -151,8 +157,8 @@
                     <label for="symptoms">Choose symptoms:</label>
                     <select class="form-select" name="symptoms" multiple aria-label="multiple select example">
                         <option disabled>Open this select menu</option>
-                        <option value="testSymptom21">testSymptom21</option>
-                        <option value="Sneezing">Sneezing</option>
+                        <!-- <option value="testSymptom21">testSymptom21</option> -->
+                        <!-- <option value="Sneezing">Sneezing</option> -->
                         
                         <% var symptomArray = [] %>
                         <% diseases.forEach((disease) => { %>

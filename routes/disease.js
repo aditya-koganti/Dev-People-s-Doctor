@@ -18,12 +18,11 @@ router.post("/disease", function (req, res) {
   };
   Disease.create(newDisease, function (err, createdDisease) {
     if (err) {
-      console.log("created error");
-      console.log(err);
+      res.status(500).json({ success: false, message: 'Failed to create new disease.' });
     } else {
-      req.flash("success", "You have created a disease");
+      // req.flash("success", "You have created a disease");
       console.log(createdDisease);
-      res.redirect("/diseases");
+      res.status(200).json({ success: true, message: 'New Disease creation successful.' });
     }
   });
 });

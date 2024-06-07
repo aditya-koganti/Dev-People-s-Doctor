@@ -26,7 +26,7 @@ app.use(express.static(__dirname + "/public"));
 
 app.use(flash());
 
-mongoose.connect("mongodb://localhost/aighteam1", {
+mongoose.connect("mongodb+srv://adi:aaaa@base-cluster.nguk2eg.mongodb.net/?retryWrites=true&w=majority&appName=Base-Cluster", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   // useFindAndModify: false
